@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Car</title>
+</head>
+<body>
+    <h1>Edit Car</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" value="{{ car.name }}" required>
+        <select name="condition" required>
+            <option value="New" {% if car.condition == 'New' %}selected{% endif %}>New</option>
+            <option value="Used" {% if car.condition == 'Used' %}selected{% endif %}>Used</option>
+        </select>
+        <input type="text" name="color" value="{{ car.color }}" required>
+        <input type="text" name="interior" value="{{ car.interior }}" required>
+        <input type="text" name="exterior" value="{{ car.exterior }}" required>
+        <div class="checkbox">
+            <input type="checkbox" name="reserved" id="reserved" {% if car.reserved %}checked{% endif %}>
+            <label for="reserved">Reserved (Deposit Paid)</label>
+        </div>
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Save Changes</button>
+    </form>
+    <a href="/">Back</a>
+</body>
+</html>
